@@ -24,5 +24,15 @@ namespace WebApi.Controllers
             Users = db.Users.ToList();
             return Users;
         }
+
+        [HttpPost]
+        [Route("")]
+        public User CreateUser(User user)
+        {
+            DatabaseContext db = new DatabaseContext();
+            db.Users.Add(user);
+            db.SaveChanges();
+            return user;
+        }
     }
 }
