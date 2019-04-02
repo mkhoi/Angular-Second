@@ -46,5 +46,16 @@ namespace WebApi.Controllers
             currentUser.UserName = user.UserName;
             db.SaveChanges();
         }
+
+        [HttpDelete]
+        [Route("{userId}")]
+        public User DeleteUser(int userId)
+        {
+            DatabaseContext db = new DatabaseContext();
+            User selectedUser = db.Users.FirstOrDefault(temp => temp.Id == userId);
+            db.Users.Remove(selectedUser);
+            db.SaveChanges();
+            return selectedUser;
+        }
     }
 }

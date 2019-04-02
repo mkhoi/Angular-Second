@@ -16,7 +16,8 @@
                 <td>{{user.lastName}}</td>
                 <td>{{user.userName}}</td>
                 <td>
-                    <a title="" (click)="onEditClicked(user.id)"><i class="fa fa-edit"></i></a>
+                    <a title="edit" (click)="onEditClicked(user.id)"><i class="fa fa-edit"></i></a>
+                    <a title="delete" (click)="onDeleteClicked(user.id)"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         </tbody>
