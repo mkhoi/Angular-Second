@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "./user";
 import { UserService } from "./userService";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "users",
@@ -9,7 +10,7 @@ import { UserService } from "./userService";
 })
 export class Users implements OnInit{
     private users: Observable<User[]>;
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private router: Router) { }
     /*constructor() {
         let users: Array<any> = [
             {id: 1, firstName: "Luka", lastName: "Ku", userName: "LukaKu"},
@@ -23,7 +24,11 @@ export class Users implements OnInit{
         this.users = this.userService.getUsers();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUsers();
+    }
+
+    public onEditClicked(userId: string) {
+        this.router.navigate(["editUser", userId]);
     }
 }

@@ -34,5 +34,17 @@ namespace WebApi.Controllers
             db.SaveChanges();
             return user;
         }
+
+        [HttpPut]
+        [Route("{userId}")]
+        public void UpdateUser(int userId, User user)
+        {
+            DatabaseContext db = new DatabaseContext();
+            User currentUser = db.Users.FirstOrDefault(temp => temp.Id == userId);
+            currentUser.FirstName = user.FirstName;
+            currentUser.LastName = user.LastName;
+            currentUser.UserName = user.UserName;
+            db.SaveChanges();
+        }
     }
 }
